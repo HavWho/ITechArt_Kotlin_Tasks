@@ -21,15 +21,32 @@ class MainActivity : AppCompatActivity() {
         collect.iterateThroughList(collect.list)
         collect.iterateThroughList(collect.mutableList)
 
+        //чтобы сунуть элемент внутрь списка
+        //придется сдвинуть все элементы с нужного индекса
+        //на 1 право
+        collect.mutableList.add(6)
+        collect.mutableList.remove(6)
+
         collect.iterateThroughSet(collect.mutableSet)
         collect.iterateThroughSet(collect.set)
 
+        //если пытаться добавить уже существующий элемент
+        //то он не появится в set
+        //после добавления элементы сортироваться не будут
+        collect.mutableSet.add(0)
+        collect.mutableSet.remove(0)
+
         collect.iterateThroughMap(collect.map)
-
-        println(collect.x == collect.y)
-        println(collect.x.equals(collect.y))
-
         collect.iterateThroughMutableMap(collect.mutableMap)
+
+        //put - метод добавления элемента в мапу
+        collect.mutableMap.put(null, "qwerty")
+        collect.mutableMap.remove(null)
+
+        //при этом везде еще можно добавление и удаление через + и - сделать
+
+        //поиск производится через getIndex, first()/find(), contains() (либо in, но этот оператор под капотом имеет contains),
+        //binarySearch, Match-методы
 
     }
 }
