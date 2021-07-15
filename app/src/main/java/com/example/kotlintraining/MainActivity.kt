@@ -8,6 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     val consts : Constants = Constants()
     val collect : CollectionsTasks = CollectionsTasks()
+    val controlFlowTask = ControlFlowTask()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,5 +49,12 @@ class MainActivity : AppCompatActivity() {
         //поиск производится через getIndex, first()/find(), contains() (либо in, но этот оператор под капотом имеет contains),
         //binarySearch, Match-методы
 
+        val intArray = intArrayOf(2, 10, 9, 4, 15, 67, 1, 17, 8, 4, 4)
+        val testFor = controlFlowTask.forBubbleSort(intArray)
+        val testWhile = controlFlowTask.whileBubbleSort(intArray)
+
+        testFor.forEach { print("$it ") }
+        println("\n")
+        testWhile.forEach { print("$it ") }
     }
 }
