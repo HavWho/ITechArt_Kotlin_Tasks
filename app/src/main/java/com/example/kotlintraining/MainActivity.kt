@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         println(consts.floatToDouble(999f))
-        println(consts.doubleToFloat(4567.0))
+        /*println(consts.doubleToFloat(4567.0))
         println(consts.decimalToString(BigDecimal(123456789)))
         println(consts.stringToDecimal("987654321000"))
 
@@ -55,6 +55,6 @@ class MainActivity : AppCompatActivity() {
 
         testFor.forEach { print("$it ") }
         println("\n")
-        testWhile.forEach { print("$it ") }
+        testWhile.forEach { print("$it ") }*/
     }
 }

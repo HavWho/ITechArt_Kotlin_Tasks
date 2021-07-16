@@ -5,6 +5,8 @@ import java.math.BigDecimal
 import java.net.URL
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import kotlin.experimental.and
+import kotlin.random.Random
 
 class Constants {
 
@@ -14,13 +16,34 @@ class Constants {
 
     //для побитовых операций - toRawBits
 
-    fun floatToDouble(float: Float?) : Double{
+    fun floatToDouble(float: Float?) : MutableList<Any>{
         try {
-            return ByteBuffer.allocate(16).order(ByteOrder.LITTLE_ENDIAN).putFloat(float!!)
-                .getDouble(0)
+            val b = ByteArray(9)
+
+            Random.nextBytes(b)
+            for (i in 0..b.size - 1) {
+                print(b[i])
+                print(" ")
+            }
+
+            println("\n")
+
+            val vf = ByteBuffer.allocate(9).put(b)
+            val mutList : MutableList<Any> = mutableListOf()
+            mutList.add(vf.getFloat(0))
+            mutList.add(vf.getShort(4))
+            mutList.add(vf.getShort(6))
+
+            val bools = vf.get(8).toInt()
+
+            for (i in 1..8) {
+                mutList.add(bools.shl(i).and(0x80) != 0)
+            }
+
+            return mutList
         } catch (e : NullPointerException){
             Log.e(e.printStackTrace().toString(), "Null Pointer Float")
-            return 0.0
+            return mutableListOf(0)
         }
     }
 
