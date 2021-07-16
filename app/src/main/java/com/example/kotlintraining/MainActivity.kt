@@ -8,8 +8,11 @@ class MainActivity : AppCompatActivity() {
 
     val consts : Constants = Constants()
     val collect : CollectionsTasks = CollectionsTasks()
+    val funcs : FunctionsTasks = FunctionsTasks()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val lambda = {s1 : String, s2 : String -> s1 + s2}
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -47,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         //поиск производится через getIndex, first()/find(), contains() (либо in, но этот оператор под капотом имеет contains),
         //binarySearch, Match-методы
+
+        funcs.someFunc4(lambda)
 
     }
 }
