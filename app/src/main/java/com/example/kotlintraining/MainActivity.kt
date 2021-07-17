@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
     val consts : Constants = Constants()
     val collect : CollectionsTasks = CollectionsTasks()
     val funcs : FunctionsTasks = FunctionsTasks()
+    val controlFlowTask = ControlFlowTask()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val lambda = {s1 : String, s2 : String -> s1 + s2}
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         println(consts.floatToDouble(999f))
-        println(consts.doubleToFloat(4567.0))
+        /*println(consts.doubleToFloat(4567.0))
         println(consts.decimalToString(BigDecimal(123456789)))
         println(consts.stringToDecimal("987654321000"))
 
@@ -50,8 +51,15 @@ class MainActivity : AppCompatActivity() {
 
         //поиск производится через getIndex, first()/find(), contains() (либо in, но этот оператор под капотом имеет contains),
         //binarySearch, Match-методы
-
+        
         funcs.someFunc4(lambda)
 
+        val intArray = intArrayOf(2, 10, 9, 4, 15, 67, 1, 17, 8, 4, 4)
+        val testFor = controlFlowTask.forBubbleSort(intArray)
+        val testWhile = controlFlowTask.whileBubbleSort(intArray)
+
+        testFor.forEach { print("$it ") }
+        println("\n")
+        testWhile.forEach { print("$it ") }*/
     }
 }
