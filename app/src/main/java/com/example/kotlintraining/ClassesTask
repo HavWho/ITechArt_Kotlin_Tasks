@@ -1,0 +1,50 @@
+package com.example.kotlintraining
+
+import java.lang.ref.WeakReference
+import java.time.LocalDate
+
+open class ClassesTasks (val _name: String) {
+
+    val name = _name
+    var age = 0
+    var address = ""
+    open var date = WeakReference(LocalDate.now())
+
+    private lateinit var gender : String
+    val commentary : String by lazy { "Hello world!" }
+
+    open protected val orderItem = "Book"
+    private val orderNumber = "1".hashCode()
+    open internal var orderItemName = "Dostoevsky F. - Idiot"
+    //default visibility modify - public
+
+    constructor(name: String, _address: String, _age: Int, _gender: String = "Male") : this(name) {
+        age = _age
+        address = _address
+        gender = _gender
+    }
+
+    open fun someFunc() {
+        println(commentary)
+    }
+
+}
+
+class SecondClass(_name: String) : ClassesTasks(_name) {
+
+    init {
+        val name = _name
+    }
+
+    //я могу получить доступ ко всем свойствам с protected или internal модификаторами доступа
+    //те, что без явных модификаторов - public (ну и к ним соответственно тоже можно получить доступ)
+
+    override val orderItem = "Smartphone"
+    override var orderItemName = "Google Pixel 3A"
+
+    override fun someFunc() {
+        println(name)
+    }
+
+}
+
