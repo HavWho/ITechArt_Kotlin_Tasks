@@ -1,0 +1,53 @@
+package com.example.myapplication
+
+import java.time.LocalDateTime
+
+interface someInterface {
+    val name : String
+    val country : String
+    val order : LocalDateTime
+
+    fun printName()
+
+    fun printCountry()
+
+    fun printOrderTime()
+}
+
+open class InterfaceTasks(override val name: String,
+                          override val country: String,
+                          override val order: LocalDateTime = LocalDateTime.now()
+) : someInterface {
+
+    override fun printName() {
+        println(this.name)
+    }
+
+    override fun printCountry() {
+        println(this.country)
+    }
+
+    override fun printOrderTime() {
+        println(this.order)
+    }
+
+}
+
+class SubInterfaceTasks(name: String,
+                        country: String,
+                        order: LocalDateTime = LocalDateTime.now()
+) : InterfaceTasks(name, country, order) {
+
+    override fun printName() {
+        println("First Output")
+    }
+
+    override fun printCountry() {
+        println("Second Output")
+    }
+
+    override fun printOrderTime() {
+        println("Third Output")
+    }
+
+}
