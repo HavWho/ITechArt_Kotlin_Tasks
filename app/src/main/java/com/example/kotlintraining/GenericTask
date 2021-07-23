@@ -1,0 +1,22 @@
+package com.example.kotlintraining
+
+//produce, but not consume
+interface someInterface1<out T> {
+    fun someFunc1(): T
+}
+
+//type is consume, but not produce
+interface someInterface2<in T> {
+    fun someFunc2() : Int
+}
+
+class GenericsTask<T>(p: T) {
+
+    val prop : T = p
+
+    fun <T> someFunc2(generic : List<T>) : List<String>
+            where T : CharSequence,
+                  T : someInterface1<T> {
+        return emptyList()
+    }
+}
